@@ -14,7 +14,7 @@ export function Pricing() {
         <SectionHeading
           eyebrow="Price"
           title="料金"
-          description="上記の月額費用は広告運用代行(サービス提供)に対する対価で、広告費(媒体費)は含まれず別途クライアント負担となります。広告運用は数字が安定するまでに一定期間が必要なため、契約期間は6ヶ月からとしています。"
+          description="上記の月額費用は広告運用代行(サービス提供)に対する対価で、広告費(媒体費)は含まれず別途クライアント様のご負担となります。広告運用は数字が安定するまでに一定期間が必要なため、契約期間は6ヶ月からとしています。"
         />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {pricingPlans.map((plan, index) => (

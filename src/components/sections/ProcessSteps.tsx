@@ -18,7 +18,7 @@ export function ProcessSteps() {
         <SectionHeading
           eyebrow="Flow"
           title="契約までの流れ"
-          description="初回相談から施策開始まで、最短2週間で稼働できます。"
+          description="初回相談から施策開始まで、最短3週間で稼働できます。"
         />
         <div className="flex flex-col gap-6 md:flex-row md:gap-3">
           {processSteps.map((step, index) => (

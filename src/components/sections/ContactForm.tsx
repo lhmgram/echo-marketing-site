@@ -24,9 +24,21 @@ const initialState: FormState = {
 const inputClasses =
   "w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-brand-dark outline-none focus:border-brand-green";
 
+function RequiredBadge() {
+  return (
+    <span className="ml-2 rounded bg-red-500 px-1.5 py-0.5 text-xs font-medium text-white">
+      必須
+    </span>
+  );
+}
+
+const HYPERFORM_ENDPOINT = "https://hyperform.jp/api/ziF6xkRS";
+
 export function ContactForm() {
   const [formData, setFormData] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -35,11 +47,31 @@ export function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("お問い合わせ内容:", formData);
-    setSubmitted(true);
-    setFormData(initialState);
+    setSubmitting(true);
+    setError(false);
+
+    const body = new FormData();
+    body.append("会社名", formData.companyName);
+    body.append("お名前", formData.contactName);
+    body.append("email", formData.email);
+    body.append("電話番号", formData.phone);
+    body.append("相談内容", formData.message);
+
+    try {
+      const res = await fetch(HYPERFORM_ENDPOINT, {
+        method: "POST",
+        body,
+      });
+      if (!res.ok) throw new Error("送信に失敗しました");
+      setSubmitted(true);
+      setFormData(initialState);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -65,7 +97,7 @@ export function ContactForm() {
                 htmlFor="companyName"
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
-                会社名(任意)
+                会社名
               </label>
               <input
                 id="companyName"
@@ -83,6 +115,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 お名前
+                <RequiredBadge />
               </label>
               <input
                 id="contactName"
@@ -101,6 +134,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 メールアドレス
+                <RequiredBadge />
               </label>
               <input
                 id="email"
@@ -119,6 +153,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 電話番号
+                <RequiredBadge />
               </label>
               <input
                 id="phone"
@@ -137,6 +172,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 相談内容
+                <RequiredBadge />
               </label>
               <textarea
                 id="message"
@@ -149,8 +185,16 @@ export function ContactForm() {
               />
             </div>
 
+            {error && (
+              <p className="text-sm text-red-600">
+                送信に失敗しました。時間を置いて再度お試しください。
+              </p>
+            )}
+
             <div>
-              <Button type="submit">送信する</Button>
+              <Button type="submit" disabled={submitting}>
+                {submitting ? "送信中..." : "送信する"}
+              </Button>
             </div>
           </form>
         )}

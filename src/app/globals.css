@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #129142;
+  --color-brand-green-hover: #0f7a38;
+  --color-brand-green-tint: #eaf6ee;
+  --color-brand-dark: #063317;
+
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-brand-dark);
+  font-family: var(--font-sans);
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-left 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

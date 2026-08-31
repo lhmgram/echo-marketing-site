@@ -2,10 +2,10 @@ import type { ProfileHistoryItem } from "@/types";
 
 export const profileHistory: ProfileHistoryItem[] = [
   {
-    period: "国際基督教大学(ICU)卒業後",
+    period: "総合病院(ICU)",
     role: "看護師",
     description:
-      "総合病院にて臨床看護師として勤務。患者対応や多職種連携を通じて、現場の状況把握と優先順位判断の経験を積む。",
+      "総合病院の集中治療室(ICU)にて臨床看護師として勤務。患者対応や多職種連携を通じて、現場の状況把握と優先順位判断の経験を積む。",
   },
   {
     period: "その後",

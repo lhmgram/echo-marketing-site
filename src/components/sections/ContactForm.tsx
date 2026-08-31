@@ -22,14 +22,10 @@ const initialState: FormState = {
 };
 
 const inputClasses =
-  "w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-brand-dark outline-none focus:border-brand-green";
+  "w-full rounded-md bg-gray-100 px-4 py-3 text-sm text-brand-dark outline-none transition-colors focus:bg-white focus:ring-2 focus:ring-brand-green";
 
-function RequiredBadge() {
-  return (
-    <span className="ml-2 rounded bg-red-500 px-1.5 py-0.5 text-xs font-medium text-white">
-      必須
-    </span>
-  );
+function RequiredMark() {
+  return <span className="ml-1 text-red-500">*</span>;
 }
 
 const HYPERFORM_ENDPOINT = "https://hyperform.jp/api/ziF6xkRS";
@@ -92,6 +88,11 @@ export function ContactForm() {
             onSubmit={handleSubmit}
             className="flex max-w-xl flex-col gap-5"
           >
+            <p className="text-xs text-gray-500">
+              <span className="text-red-500">*</span>
+              マーク項目は入力必須項目です。
+            </p>
+
             <div>
               <label
                 htmlFor="companyName"
@@ -115,7 +116,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 お名前
-                <RequiredBadge />
+                <RequiredMark />
               </label>
               <input
                 id="contactName"
@@ -134,7 +135,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 メールアドレス
-                <RequiredBadge />
+                <RequiredMark />
               </label>
               <input
                 id="email"
@@ -153,7 +154,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 電話番号
-                <RequiredBadge />
+                <RequiredMark />
               </label>
               <input
                 id="phone"
@@ -172,7 +173,7 @@ export function ContactForm() {
                 className="mb-1 block text-sm font-medium text-brand-dark"
               >
                 相談内容
-                <RequiredBadge />
+                <RequiredMark />
               </label>
               <textarea
                 id="message"

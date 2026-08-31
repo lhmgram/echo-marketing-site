@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
 import { CaseStudyMetrics } from "@/components/sections/CaseStudyMetrics";
 import { CaseStudyStory } from "@/components/sections/CaseStudyStory";
 import { ReservationChart } from "@/components/sections/ReservationChart";
@@ -18,11 +18,16 @@ export function CaseStudy() {
           description={`${clinicProfile.name}における実績です。Meta広告・Google広告・SNS運用(3アカウント)・SEO/MEO・LINE公式アカウント・LP制作・コンテンツ制作までを一人で担当し、感覚に頼らず数字を追いながら運用を継続しています。`}
         />
 
-        <Reveal className="mb-12">
-          <PhotoPlaceholder
-            label={`${clinicProfile.name} 外観・内観`}
-            className="aspect-[21/9] w-full"
-          />
+        <Reveal className="mb-12 overflow-hidden rounded-lg border border-gray-200 bg-white">
+          <div className="relative z-[45] aspect-video w-full max-w-2xl">
+            <Image
+              src="/case-study-profile.jpg"
+              alt={clinicProfile.name}
+              fill
+              sizes="(min-width: 768px) 672px, 100vw"
+              className="object-contain"
+            />
+          </div>
         </Reveal>
 
         <CaseStudyMetrics />

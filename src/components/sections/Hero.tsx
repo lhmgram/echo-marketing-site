@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
 import { services } from "@/lib/constants/services";
 
 export function Hero() {
@@ -46,10 +46,16 @@ export function Hero() {
           </div>
 
           <Reveal delay={150}>
-            <PhotoPlaceholder
-              label="平山大剛 / 作業風景"
-              className="aspect-[4/5] w-full"
-            />
+            <div className="relative z-[45] aspect-[4/5] w-full overflow-hidden rounded-lg">
+              <Image
+                src="/hero-profile.jpg"
+                alt="平山大剛"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+                priority
+              />
+            </div>
           </Reveal>
         </div>
       </Container>

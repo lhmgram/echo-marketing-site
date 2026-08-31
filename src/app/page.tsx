@@ -8,18 +8,23 @@ import { Profile } from "@/components/sections/Profile";
 import { Pricing } from "@/components/sections/Pricing";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { CtaBar } from "@/components/ui/CtaBar";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <PainPoints />
+      <CtaBar />
       <RootCauses />
       <Services />
+      <CtaBar />
       <SupportActivities />
       <CaseStudy />
+      <CtaBar />
       <Profile />
       <Pricing />
+      <CtaBar />
       <ProcessSteps />
       <ContactForm />
     </>

@@ -18,8 +18,8 @@ export function CaseStudy() {
           description={`${clinicProfile.name}における実績です。Meta広告・Google広告・SNS運用(3アカウント)・SEO/MEO・LINE公式アカウント・LP制作・コンテンツ制作までを一人で担当し、感覚に頼らず数字を追いながら運用を継続しています。`}
         />
 
-        <Reveal className="mb-12 overflow-hidden rounded-lg border border-gray-200 bg-white">
-          <div className="relative z-[45] aspect-video w-full max-w-2xl">
+        <Reveal className="mx-auto mb-12 max-w-2xl overflow-hidden rounded-lg border border-gray-200 bg-white">
+          <div className="relative z-[45] aspect-video w-full">
             <Image
               src="/case-study-profile.jpg"
               alt={clinicProfile.name}

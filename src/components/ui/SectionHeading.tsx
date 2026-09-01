@@ -11,12 +11,12 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className="mb-10 flex flex-col items-center text-center md:mb-14">
-      <div className="flex items-center gap-4 md:gap-6">
-        <span className="h-px w-8 shrink-0 bg-brand-dark md:w-16" />
-        <h2 className="text-2xl font-black tracking-tight text-brand-dark md:text-4xl">
+      <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+        <span className="hidden h-px w-8 shrink-0 bg-brand-dark sm:block md:w-16" />
+        <h2 className="text-xl font-black tracking-tight text-brand-dark sm:text-2xl md:text-4xl">
           {title}
         </h2>
-        <span className="h-px w-8 shrink-0 bg-brand-dark md:w-16" />
+        <span className="hidden h-px w-8 shrink-0 bg-brand-dark sm:block md:w-16" />
       </div>
       {eyebrow && (
         <p className="mt-3 text-xs font-semibold tracking-[0.2em] text-brand-green uppercase">
